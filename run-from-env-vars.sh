@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ### Install target-stitch into a virtualenv
-pip install virtualenv
 python3 -m venv target-stitch
 source target-stitch/bin/activate
 pip install target-stitch
@@ -20,7 +19,7 @@ aws s3 cp "$TAP_STATE_FILE_S3_PATH" state.json || echo "{}" > state.json
 tail -n1 state.log > new-state.json
 
 ### Save state file
-if [ -s state.json ]
+if [ -s new-state.json ]
 then
     aws s3 cp new-state.json "$TAP_STATE_S3_FILE_PATH"
 fi
