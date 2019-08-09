@@ -8,7 +8,7 @@ echo "$CATALOG" > catalog.json
 aws s3 cp "$TAP_STATE_FILE_S3_PATH" state.json || echo "{}" > state.json
 
 ### Run the tap
-{ tap-platformpurple -s state.json -c config.json --catalog catalog.json | /app/.target-stitch/bin/target-stitch -c persist.json > state.log; }
+{ tap-platformpurple -s state.json -c config.json --catalog catalog.json | target-stitch -c persist.json > state.log; }
 
 tail -n1 state.log > new-state.json
 
