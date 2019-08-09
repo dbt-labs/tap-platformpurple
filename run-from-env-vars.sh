@@ -1,4 +1,4 @@
-#!/bin/bash -eo pipefail
+#!/bin/bash
 
 echo "$STITCH_CONFIG" > persist.json
 echo "$TAP_CONFIG" > config.json
