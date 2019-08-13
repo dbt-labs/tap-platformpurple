@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ### Load configuration
-echo "$STITCH_CONFIG" > persist.json || { echo "Missing stitch config!"; exit 1 }
-echo "$TAP_CONFIG" > config.json || { echo "Missing tap config!"; exit 1 }
-echo "$CATALOG" > catalog.json || { echo "Missing catalog!"; exit 1 }
+echo "$STITCH_CONFIG" > persist.json || { echo "Missing stitch config!"; exit 1; }
+echo "$TAP_CONFIG" > config.json || { echo "Missing tap config!"; exit 1; }
+echo "$CATALOG" > catalog.json || { echo "Missing catalog!"; exit 1; }
 
 aws s3 cp "$TAP_STATE_FILE_S3_PATH" state.json || echo "{}" > state.json
 
