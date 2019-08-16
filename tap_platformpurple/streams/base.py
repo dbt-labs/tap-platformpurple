@@ -64,7 +64,15 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
             if filters is not None:
                 body["filters"] = filters
 
-            response = self.client.make_request(self.get_url(), "POST", body=body)
+            try:
+                response = self.client.make_request(self.get_url(), "POST", body=body)
+            except RuntimeError as e:
+                if "502" in str(e):
+                    # try one more time
+                    response = self.client.make_request(self.get_url(), "POST", body=body)
+
+                else:
+                    raise e
 
             to_write = self.get_stream_data(response)
 
