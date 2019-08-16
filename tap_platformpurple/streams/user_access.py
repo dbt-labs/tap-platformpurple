@@ -30,7 +30,7 @@ class UserAccessStream(BaseDatePaginatedPlatformPurpleStream):
         return out
 
     def get_time_for_state(self, item):
-        return parse(item.get("startDateTime"))
+        return parse(item.get("lastUpdate"))
 
     def get_url(self):
         return "https://api-v4-staging.platformpurple.com/api/stats/userAccess4Org"
