@@ -67,7 +67,7 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
             try:
                 response = self.client.make_request(self.get_url(), "POST", body=body)
             except RuntimeError as e:
-                if "502" in str(e):
+                if "502" in str(e) or "504" in str(e):
                     # try one more time
                     response = self.client.make_request(self.get_url(), "POST", body=body)
 
