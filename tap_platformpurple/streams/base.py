@@ -35,6 +35,9 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
     def get_time_for_state(self, item):
         return parse(item.get("dateTime"))
 
+    def get_interval(self):
+        return datetime.timedelta(hours=1)
+
     def sync_data(self):
         table = self.TABLE
         done = False
@@ -47,7 +50,7 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
         else:
             start_date = start_date.replace(tzinfo=pytz.UTC)
 
-        td = datetime.timedelta(hours=1)
+        td = self.get_interval()
 
         end_date = start_date + td
 
@@ -69,7 +72,9 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
             except RuntimeError as e:
                 if "502" in str(e) or "504" in str(e):
                     # try one more time
-                    response = self.client.make_request(self.get_url(), "POST", body=body)
+                    response = self.client.make_request(
+                        self.get_url(), "POST", body=body
+                    )
 
                 else:
                     raise e

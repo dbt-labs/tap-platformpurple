@@ -1,3 +1,4 @@
+import datetime
 import singer
 
 from tap_platformpurple.streams.base import BaseDatePaginatedPlatformPurpleStream
@@ -10,6 +11,9 @@ class UserAccessStream(BaseDatePaginatedPlatformPurpleStream):
     TABLE = "user_access"
     KEY_PROPERTIES = ["userEmail", "productID", "startDateTime"]
     API_METHOD = "POST"
+
+    def get_interval(self):
+        return datetime.timedelta(hours=12)
 
     def get_stream_data(self, data):
         out = []
