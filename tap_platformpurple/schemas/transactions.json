@@ -43,6 +43,9 @@
     },
     "processorTransactionID": {
       "type": ["null", "string"]
+    },
+    "userID": {
+      "type": ["integer", "null"]
     }
   }
 }

@@ -31,7 +31,12 @@
     },
     "currentStatus": {
       "type": ["integer", "null"]
+    },
+    "transactionID": {
+      "type": ["string", "null"]
+    },
+    "userID": {
+      "type": ["integer", "null"]
     }
   }
 }
-  

@@ -31,7 +31,9 @@
     },
     "lastUpdated": {
       "type": ["integer", "null"]
+    },
+    "userID": {
+      "type": ["integer", "null"]
     }
   }
 }
-  
