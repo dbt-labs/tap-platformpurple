@@ -4,7 +4,7 @@
   "properties": {
     "id": {
       "type": "integer"
-    }, 
+    },
     "promotionID": {
       "type": ["string", "null"]
     },
@@ -25,6 +25,12 @@
     "lastModified": {
       "type": ["string", "null"],
       "format": "date-time"
+    },
+    "referredUserID": {
+      "type": ["integer", "null"]
+    },
+    "referringUserID": {
+      "type": ["integer", "null"]
     }
   }
 }
