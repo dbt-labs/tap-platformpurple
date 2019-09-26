@@ -59,6 +59,8 @@ class UserInfoStream(BaseDatePaginatedPlatformPurpleStream):
                 }
             }
 
+            LOGGER.info(body)
+
             response = self.client.make_request(self.get_url(), "POST", body=body)
 
             to_write = self.get_stream_data(response)
