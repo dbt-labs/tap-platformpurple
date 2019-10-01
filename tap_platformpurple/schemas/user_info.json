@@ -34,6 +34,12 @@
     },
     "userID": {
       "type": ["integer", "null"]
+    },
+    "contestName": {
+      "type": ["string", "null"]
+    },
+    "userInfoType": {
+      "type": ["string", "null"]
     }
   }
 }
