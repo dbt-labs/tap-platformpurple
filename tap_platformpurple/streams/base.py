@@ -67,6 +67,8 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
             if filters is not None:
                 body["filters"] = filters
 
+            LOGGER.info(body)
+
             try:
                 response = self.client.make_request(self.get_url(), "POST", body=body)
             except RuntimeError as e:
