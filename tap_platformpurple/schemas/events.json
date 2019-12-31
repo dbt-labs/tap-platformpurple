@@ -20,6 +20,12 @@
     "origin": {
       "type": ["null", "string"]
     },
+    "context": {
+      "type": ["null", "string"]
+    },
+    "route": {
+      "type": ["null", "string"]
+    },
     "sessionGroup": {
       "type": ["null", "string"]
     },
@@ -39,6 +45,9 @@
       "type": ["null", "integer"]
     },
     "productSKU": {
+      "type": ["null", "string"]
+    },
+    "productName": {
       "type": ["null", "string"]
     },
     "osVersion": {
@@ -76,6 +85,255 @@
         }
       }
     },
+    "userSelectedTagNames":{
+        "type": ["null", "array"],
+        "items": {
+            "type": ["null","string"]
+        }
+    },
+    "userSelectedTagIDs":{
+      "type": [
+        "null",
+        "object",
+        "array"
+      ],
+      "items": {
+          "type": ["null","string"]
+      },
+      "properties": {
+        "dateTime": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "referer": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "userSelectedTagNames": {
+          "type": [
+            "null",
+            "array"
+          ],
+          "items": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "city": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "deviceVendor": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "origin": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "latitude": {
+          "type": [
+            "null",
+            "number"
+          ]
+        },
+        "userSelectedTagIDs": {
+          "type": [
+            "null",
+            "array"
+          ],
+          "items": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "sessionGroup": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "userID": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "clientTimestamp": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "connectionType": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "zip_code": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "lastUpdated": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "eventDesc": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "osVersion": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "browser": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "browserVersion": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "country_name": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "userIP": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "userEmail": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "region_name": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "timestamp": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "longitude": {
+          "type": [
+            "null",
+            "number"
+          ]
+        },
+        "deviceType": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "os": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "receivedTimestamp": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "ip": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "eventType": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "time_zone": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "referrer": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "country_code": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "environment": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "metro_code": {
+          "type": [
+            "null",
+            "integer"
+          ]
+        },
+        "anonymousUserID": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "deviceModel": {
+            "type":["null","string"]
+        },
+        "region_code": {
+            "type":["null","string"]
+        },
+        "docID": {
+            "type":["null","string"]
+        }
+      }
+  },
     "mediaType": {
       "type": ["null", "string"]
     },
