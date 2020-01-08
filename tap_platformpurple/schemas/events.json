@@ -20,6 +20,12 @@
     "origin": {
       "type": ["null", "string"]
     },
+    "context": {
+      "type": ["null", "string"]
+    },
+    "route": {
+      "type": ["null", "string"]
+    },
     "sessionGroup": {
       "type": ["null", "string"]
     },
@@ -39,6 +45,9 @@
       "type": ["null", "integer"]
     },
     "productSKU": {
+      "type": ["null", "string"]
+    },
+    "productName": {
       "type": ["null", "string"]
     },
     "osVersion": {
@@ -76,6 +85,18 @@
         }
       }
     },
+    "userSelectedTagNames":{
+        "type": ["null", "array"],
+        "items": {
+            "type": ["null","string"]
+        }
+    },
+    "userSelectedTagIDs":{
+        "type": ["null", "array"],
+        "items": {
+            "type": ["null","string"]
+        }
+    },        
     "mediaType": {
       "type": ["null", "string"]
     },
