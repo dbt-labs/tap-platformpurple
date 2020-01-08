@@ -1,0 +1,36 @@
+
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "promotionID": {
+      "type": ["string", "null"]
+    },
+    "referringUserEmail": {
+      "type": ["string", "null"]
+    },
+    "referredUserEmail": {
+      "type": ["string", "null"]
+    },
+    "dateSignedUp": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "dateUserCredited": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "lastModified": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "referredUserID": {
+      "type": ["integer", "null"]
+    },
+    "referringUserID": {
+      "type": ["integer", "null"]
+    }
+  }
+}

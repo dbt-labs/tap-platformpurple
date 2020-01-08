@@ -1,0 +1,45 @@
+
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": ["string", "null"]
+    },
+    "environment": {
+      "type": ["string", "null"]
+    },
+    "favorites": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "number"
+      }
+    },
+    "referer": {
+      "type": ["string", "null"]
+    },
+    "userIP": {
+      "type": ["string", "null"]
+    },
+    "userEmail": {
+      "type": ["string", "null"]
+    },
+    "receivedTimestamp": {
+      "type": ["integer", "null"]
+    },
+    "lastUpdated": {
+      "type": ["integer", "null"]
+    },
+    "userID": {
+      "type": ["integer", "null"]
+    },
+    "contestName": {
+      "type": ["string", "null"]
+    },
+    "userInfoType": {
+      "type": ["string", "null"]
+    }
+  }
+}

@@ -102,6 +102,63 @@
     },
     "emailParameter": {
       "type": ["null", "string"]
+    },
+    "userIP": {
+      "type": ["null", "string"]
+    },
+    "country_code": {
+      "type": ["null", "string"]
+    },
+    "city": {
+      "type": ["null", "string"]
+    },
+    "state": {
+      "type": ["null", "string"]
+    },
+    "connectionType": {
+      "type": ["null", "string"]
+    },
+    "country_name": {
+      "type": ["null", "string"]
+    },
+    "deviceModel": {
+      "type": ["null", "string"]
+    },
+    "deviceType": {
+      "type": ["null", "string"]
+    },
+    "deviceVendor": {
+      "type": ["null", "string"]
+    },
+    "eventDesc": {
+      "type": ["null", "string"]
+    },
+    "ip": {
+      "type": ["null", "string"]
+    },
+    "language": {
+      "type": ["null", "string"]
+    },
+    "latitude": {
+      "type": ["null", "number"]
+    },
+    "longitude": {
+      "type": ["null", "number"]
+    },
+    "metro_code": {
+      "type": ["null", "integer"]
+    },
+    "region_code": {
+      "type": ["null", "string"]
+    },
+    "region_name": {
+      "type": ["null", "string"]
+    },
+    "time_zone": {
+      "type": ["null", "string"]
+    },
+    "zip_code": {
+      "type": ["null", "string"]
     }
   }
 }

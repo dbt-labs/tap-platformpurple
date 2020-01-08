@@ -3,46 +3,36 @@ import pytz
 import singer
 
 from dateutil.parser import parse
-from tap_framework.streams import BaseStream
+from tap_platformpurple.streams.base import BaseDatePaginatedPlatformPurpleStream
 from tap_framework.config import get_config_start_date
 from tap_framework.state import get_last_record_value_for_table, incorporate, save_state
 
 LOGGER = singer.get_logger()
 
 
-class BasePlatformPurpleStream(BaseStream):
+class UserInfoStream(BaseDatePaginatedPlatformPurpleStream):
+    TABLE = "user_info"
+    KEY_PROPERTIES = []
+    API_METHOD = "POST"
+
     def get_stream_data(self, data):
-        return [self.transform_record(item) for item in data]
+        return [self.transform_record(item) for item in data.get("data")]
 
-    def sync_data(self):
-        table = self.TABLE
+    def get_time_for_state(self, item):
+        return parse(item.get("startDateTime"))
 
-        LOGGER.info("Querying {}.".format(table))
-
-        response = self.client.make_request(
-            self.get_url(), "POST", body=self.get_filters()
+    def get_url(self):
+        return (
+            "https://api-v4-staging.platformpurple.com/api/userInfo/records4Environment"
         )
 
-        to_write = self.get_stream_data(response)
-
-        with singer.metrics.record_counter(endpoint=table) as ctr:
-            singer.write_records(table, to_write)
-
-            ctr.increment(amount=len(to_write))
-
-
-class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
     def get_time_for_state(self, item):
-        return parse(item.get("dateTime"))
-
-    def get_interval(self):
-        return datetime.timedelta(hours=1)
+        return datetime.datetime.fromtimestamp(item.get("lastUpdated") / 1e3, pytz.UTC)
 
     def sync_data(self):
         table = self.TABLE
         done = False
 
-        filters = self.get_filters()
         start_date = get_last_record_value_for_table(self.state, table)
 
         if start_date is None:
@@ -50,7 +40,7 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
         else:
             start_date = start_date.replace(tzinfo=pytz.UTC)
 
-        td = self.get_interval()
+        td = datetime.timedelta(hours=1)
 
         end_date = start_date + td
 
@@ -60,26 +50,18 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
             LOGGER.info("Querying {} starting at {}".format(table, start_date))
 
             body = {
-                "startMSeconds": int(start_date.timestamp() * 1000),
-                "endMSeconds": int(end_date.timestamp() * 1000),
+                "filters": {
+                    "environment": self.config.get("environment"),
+                    "lastUpdated": {
+                        "gte": int(start_date.timestamp() * 1000),
+                        "lte": int(end_date.timestamp() * 1000),
+                    },
+                }
             }
-
-            if filters is not None:
-                body["filters"] = filters
 
             LOGGER.info(body)
 
-            try:
-                response = self.client.make_request(self.get_url(), "POST", body=body)
-            except RuntimeError as e:
-                if "502" in str(e) or "504" in str(e):
-                    # try one more time
-                    response = self.client.make_request(
-                        self.get_url(), "POST", body=body
-                    )
-
-                else:
-                    raise e
+            response = self.client.make_request(self.get_url(), "POST", body=body)
 
             to_write = self.get_stream_data(response)
 
@@ -105,8 +87,9 @@ class BaseDatePaginatedPlatformPurpleStream(BasePlatformPurpleStream):
                     start_date = end_date
 
             elif start_date == max_date:
-                LOGGER.info("Advancing one millisecond.")
-                start_date = start_date + datetime.timedelta(milliseconds=1)
+                LOGGER.info("Advancing one second.")
+                start_date = start_date + datetime.timedelta(seconds=1)
+
             else:
                 LOGGER.info("Advancing by one page.")
                 start_date = max_date

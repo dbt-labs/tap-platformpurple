@@ -2,14 +2,12 @@ from tap_platformpurple.streams.base import BaseDatePaginatedPlatformPurpleStrea
 
 
 class EventsStream(BaseDatePaginatedPlatformPurpleStream):
-    TABLE = 'events'
+    TABLE = "events"
     KEY_PROPERTIES = ["docID"]
-    API_METHOD = 'POST'
+    API_METHOD = "POST"
 
     def get_url(self):
-        return 'https://api-v4.platformpurple.com/api/stats/events4Environment'
+        return "https://api-v4.platformpurple.com/api/stats/events4Environment"
 
     def get_filters(self):
-        return {
-            'environment': self.config.get('environment')
-        }
+        return {"environment": self.config.get("environment")}
